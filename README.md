@@ -2,4 +2,5 @@
 
 _Pia and Gaelle_
 
-Creating a basic calculator, to be updated with functionalities later 
+Creating a basic calculator, to be updated with functionalities later   
+First project

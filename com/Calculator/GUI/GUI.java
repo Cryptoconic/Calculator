@@ -1,7 +1,5 @@
 package com.Calculator.GUI;
 
-import com.Calculator.GUI.Buttons;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,18 +20,34 @@ public class GUI implements ActionListener {
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         panel.setLayout(new GridLayout(5, 4));
-        panel.add(Buttons.additionButton);
-        panel.add(Buttons.subtractionButton);
-        panel.add(Buttons.multiplicationButton);
+        panel.add(Buttons.resetButton);
+        panel.add(Buttons.changeSignButton);
+        panel.add(Buttons.percentButton);
         panel.add(Buttons.divisionButton);
+        panel.add(Buttons.sevenButton);
+        panel.add(Buttons.eightButton);
+        panel.add(Buttons.nineButton);
+        panel.add(Buttons.multiplicationButton);
+        panel.add(Buttons.fourButton);
+        panel.add(Buttons.fiveButton);
+        panel.add(Buttons.sixButton);
+        panel.add(Buttons.subtractionButton);
+        panel.add(Buttons.oneButton);
+        panel.add(Buttons.twoButton);
+        panel.add(Buttons.threeButton);
+        panel.add(Buttons.additionButton);
+        panel.add(Buttons.zeroButton);
+        panel.add(Buttons.emptyButton);
+        panel.add(Buttons.commaButton);
+        panel.add(Buttons.equalButton);
 
-        Buttons.additionButton.addActionListener(al);
-        Buttons.subtractionButton.addActionListener(al);
-        Buttons.multiplicationButton.addActionListener(al);
-        Buttons.divisionButton.addActionListener(al);
+        Buttons.additionButton.addActionListener(operationsListener);
+        Buttons.subtractionButton.addActionListener(operationsListener);
+        Buttons.multiplicationButton.addActionListener(operationsListener);
+        Buttons.divisionButton.addActionListener(operationsListener);
 
     }
-    ActionListener al = new ActionListener() {
+    ActionListener operationsListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();

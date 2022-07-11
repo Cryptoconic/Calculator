@@ -9,9 +9,20 @@ public class Operations implements ActionListener {
 
     static char operation;
     static double firstNumber;
+    static boolean startOfCalculation = true;
+
+    // used in order to une numbers longer than one digit by "building" them, pressing different buttons one after the other
+    static String buildingFirstNumber = "";
+
+    // see as buildingFirstNumber
+    static String buildingSecondNumber = "";
     static double secondNumber;
 
-    private static void whenSecondNumberPressed() {
+    private static void whenEqualIsPressed() {
+        if (!buildingFirstNumber.equals(""))
+            firstNumber = Double.parseDouble(buildingFirstNumber);
+        secondNumber = Double.parseDouble(buildingSecondNumber);
+        System.out.print(firstNumber + " " + operation + " " + secondNumber + " = ");
         if (operation == '+') {
             firstNumber += secondNumber;
         }
@@ -24,96 +35,85 @@ public class Operations implements ActionListener {
         if (operation == '/') {
             firstNumber /= secondNumber;
         }
-        if (operation != '\u0000') {
-            System.out.println(firstNumber);
-            operation = '\u0000';
-        }
+        System.out.println(firstNumber);
+        operation = '\u0000';
+        buildingFirstNumber = "";
+        buildingSecondNumber = "";
     }
 
     public static ActionListener numbersListener = new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();
             if (o == Buttons.oneButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 1;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "1";
+                    System.out.println(buildingFirstNumber);
                 }
                 else {
-                    secondNumber = 1;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "1";
                 }
             if (o == Buttons.twoButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 2;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "2";
                 }
                 else {
-                    secondNumber = 2;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "2";
                 }
             if (o == Buttons.threeButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 3;
-                }
-            else {
-                secondNumber = 3;
-                whenSecondNumberPressed();
-            }
-            if (o == Buttons.fourButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 4;
-                    System.out.println("4");
+                if (startOfCalculation) {
+                    buildingFirstNumber += "3";
                 }
                 else {
-                    secondNumber = 4;
-                    System.out.println("4");
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "3";
+                }
+            if (o == Buttons.fourButton)
+                if (startOfCalculation) {
+                    buildingFirstNumber += "4";
+                }
+                else {
+                    buildingSecondNumber += "4";
                 }
             if (o == Buttons.fiveButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 5;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "5";
                 }
                 else {
-                    secondNumber = 5;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "5";
                 }
             if (o == Buttons.sixButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 6;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "6";
                 }
                 else {
-                    secondNumber = 6;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "6";
                 }
             if (o == Buttons.sevenButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 7;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "7";
                 }
                 else {
-                    secondNumber = 7;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "7";
                 }
             if (o == Buttons.eightButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 8;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "8";
                 }
                 else {
-                    secondNumber = 8;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "8";
                 }
             if (o == Buttons.nineButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 9;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "9";
                 }
                 else {
-                    secondNumber = 9;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "9";
                 }
             if (o == Buttons.zeroButton)
-                if (firstNumber == 0.0d) {
-                    firstNumber = 0;
+                if (startOfCalculation) {
+                    buildingFirstNumber += "0";
                 }
                 else {
-                    secondNumber = 0;
-                    whenSecondNumberPressed();
+                    buildingSecondNumber += "0";
                 }
         }
     };
@@ -122,16 +122,33 @@ public class Operations implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             Object o = e.getSource();
-            if (o == Buttons.additionButton) {
+            if (o == Buttons.additionButton)
                 operation = '+';
-            }
             if (o == Buttons.subtractionButton)
                 operation = '-';
             if (o == Buttons.multiplicationButton)
                 operation = '*';
             if (o == Buttons.divisionButton)
                 operation = '/';
-            System.out.println(operation);
+            startOfCalculation = false;
+        }
+    };
+
+    public static ActionListener otherButtonsListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Object o = e.getSource();
+            if (o == Buttons.equalButton)
+                whenEqualIsPressed();
+            if (o == Buttons.resetButton) {
+                // Reset all variables to default
+                operation = '\u0000';
+                firstNumber = 0.0d;
+                startOfCalculation = true;
+                buildingFirstNumber = "";
+                buildingSecondNumber = "";
+                secondNumber = 0.0d;
+            }
         }
     };
 

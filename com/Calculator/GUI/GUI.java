@@ -57,6 +57,9 @@ public class GUI {
         Buttons.nineButton.addActionListener(Operations.numbersListener);
         Buttons.zeroButton.addActionListener(Operations.numbersListener);
 
+        Buttons.equalButton.addActionListener(Operations.otherButtonsListener);
+        Buttons.resetButton.addActionListener(Operations.otherButtonsListener);
+
     }
     
 }

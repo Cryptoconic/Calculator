@@ -1,3 +1,5 @@
+package com.Calculator;
+
 import com.Calculator.GUI.GUI;
 
 public class Main {

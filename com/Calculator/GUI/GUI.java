@@ -59,6 +59,7 @@ public class GUI {
 
         Buttons.equalButton.addActionListener(Operations.otherButtonsListener);
         Buttons.resetButton.addActionListener(Operations.otherButtonsListener);
+        Buttons.changeSignButton.addActionListener(Operations.otherButtonsListener);
 
     }
     

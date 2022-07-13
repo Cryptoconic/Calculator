@@ -149,6 +149,11 @@ public class Operations implements ActionListener {
                 buildingSecondNumber = "";
                 secondNumber = 0.0d;
             }
+            /* if (o == Buttons.changeSignButton) {
+            This functionality, as well as multiple others, require to know what the current number displayed on terminal is
+            It is easier to actually display the numbers on GUI and go from there than to figure out what will be displayed
+            Come back to this after
+             } */
         }
     };
 

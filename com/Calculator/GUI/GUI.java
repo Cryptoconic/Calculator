@@ -1,11 +1,11 @@
 package com.Calculator.GUI;
 
+import com.Calculator.Operations;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class GUI implements ActionListener {
+public class GUI {
 
     public GUI() {
 
@@ -41,30 +41,27 @@ public class GUI implements ActionListener {
         panel.add(Buttons.commaButton);
         panel.add(Buttons.equalButton);
 
-        Buttons.additionButton.addActionListener(operationsListener);
-        Buttons.subtractionButton.addActionListener(operationsListener);
-        Buttons.multiplicationButton.addActionListener(operationsListener);
-        Buttons.divisionButton.addActionListener(operationsListener);
+        Buttons.additionButton.addActionListener(Operations.operationsListener);
+        Buttons.subtractionButton.addActionListener(Operations.operationsListener);
+        Buttons.multiplicationButton.addActionListener(Operations.operationsListener);
+        Buttons.divisionButton.addActionListener(Operations.operationsListener);
+
+        Buttons.oneButton.addActionListener(Operations.numbersListener);
+        Buttons.twoButton.addActionListener(Operations.numbersListener);
+        Buttons.threeButton.addActionListener(Operations.numbersListener);
+        Buttons.fourButton.addActionListener(Operations.numbersListener);
+        Buttons.fiveButton.addActionListener(Operations.numbersListener);
+        Buttons.sixButton.addActionListener(Operations.numbersListener);
+        Buttons.sevenButton.addActionListener(Operations.numbersListener);
+        Buttons.eightButton.addActionListener(Operations.numbersListener);
+        Buttons.nineButton.addActionListener(Operations.numbersListener);
+        Buttons.zeroButton.addActionListener(Operations.numbersListener);
+
+        Buttons.equalButton.addActionListener(Operations.otherButtonsListener);
+        Buttons.resetButton.addActionListener(Operations.otherButtonsListener);
+        Buttons.changeSignButton.addActionListener(Operations.otherButtonsListener);
 
     }
-    ActionListener operationsListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            Object o = e.getSource();
-            if (o == Buttons.additionButton)
-                System.out.println("Addition");
-            else if (o == Buttons.subtractionButton)
-                System.out.println("Subtraction");
-            else if (o == Buttons.multiplicationButton)
-                System.out.println("Multiplication");
-            else if (o == Buttons.divisionButton)
-                System.out.println("Division");
-        }
-    };
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        System.out.println("Default");
-    }
+    
 }
 

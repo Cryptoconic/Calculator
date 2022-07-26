@@ -24,4 +24,7 @@ public class Buttons {
     public static JButton emptyButton = new JButton("");
     public static JButton commaButton = new JButton(",");
     public static JButton equalButton = new JButton("=");
+
+    public static JLabel outputField;
+
 }
